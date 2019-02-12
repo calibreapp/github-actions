@@ -1,6 +1,6 @@
 FROM node:10-slim
 
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL repository="http://github.com/benschwarz/github-actions"
 LABEL homepage="http://github.com/benschwarz/github-actions"
 LABEL maintainer="Calibre <hello@calibreapp.com>"
