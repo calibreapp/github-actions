@@ -1,8 +1,8 @@
 FROM node:10-slim
 
 LABEL version="2.0.0"
-LABEL repository="http://github.com/benschwarz/github-actions"
-LABEL homepage="http://github.com/benschwarz/github-actions"
+LABEL repository="http://github.com/calibreapp/github-actions"
+LABEL homepage="http://github.com/calibreapp/github-actions"
 LABEL maintainer="Calibre <hello@calibreapp.com>"
 
 LABEL "com.github.actions.name"="calibreapp/github-actions"
