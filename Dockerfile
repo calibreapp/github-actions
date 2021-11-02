@@ -1,6 +1,6 @@
-FROM node:10-slim
+FROM node:16-slim
 
-LABEL version="2.0.0"
+LABEL version="3.0.0"
 LABEL repository="http://github.com/calibreapp/github-actions"
 LABEL homepage="http://github.com/calibreapp/github-actions"
 LABEL maintainer="Calibre <hello@calibreapp.com>"
