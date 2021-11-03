@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-sh -c "calibre $*"
+sh -c "calibre $1"
