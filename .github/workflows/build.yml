@@ -53,4 +53,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:main
+          tags: ghcr.io/${{ github.repository }}/github-actions:main

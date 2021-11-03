@@ -1,6 +1,6 @@
-# Github Actions for [Calibre](https://calibreapp.com)
+# GitHub Actions for [Calibre](https://calibreapp.com)
 
-Calibre’s Github actions wrap our powerful [command line interface](https://calibreapp.com/cli) ([source](https://github.com/calibreapp/cli)) so that you can quickly and effortlessly add Calibre to your Github workflows.
+Calibre’s GitHub actions wrap our powerful [command line interface](https://calibreapp.com/cli) ([source](https://github.com/calibreapp/cli)) so that you can quickly and effortlessly add Calibre to your GitHub workflows.
 
 That means that any command from CLI can be run using actions!
 
@@ -9,22 +9,23 @@ That means that any command from CLI can be run using actions!
 This example will create a snapshot for a given website that Calibre is tracking. It'll filter out non-master branch pushes. (Likely, your production environment).
 
 ```workflow
-workflow "Create a Calibre snapshot" {
-  on = "push"
-  resolves = ["create calibre snapshot"]
-}
+name: Create Snapshot
+on:
+  pull_request:
 
-action "Filter master branch" {
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
+jobs:
+  build:
+    name: calibreapp/github-actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
-action "create calibre snapshot" {
-  needs = ["Filter master branch"]
-  uses = "calibreapp/github-actions@1.0.0"
-  secrets = ["CALIBRE_API_TOKEN", "CALIBRE_SITE_SLUG"]
-  args = "site create-snapshot --site=$CALIBRE_SITE_SLUG"
-}
+      - name: Create Snapshot
+        uses: calibreapp/github-actions@main
+        env:
+          CALIBRE_API_TOKEN: ${{ secrets.CALIBRE_API_TOKEN }}
+        run: site create-snapshot --site=${{ secrets.CALIBRE_SITE_SLUG }}
 ```
 
 Secrets:
