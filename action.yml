@@ -2,14 +2,16 @@ name: "GitHub Actions"
 author: "Calibre"
 description: "Effortlessly add Calibre to your GitHub workflows"
 
-runs:
-  using: "docker"
-  image: "docker://ghcr.io/calibreapp/github-actions/github-actions:main" 
-
 inputs:
   command:
     description: The Calibre CLI command to run
     required: true
+
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/calibreapp/github-actions/github-actions:main" 
+  args:
+    - ${{ inputs.command }}
 
 branding:
   icon: "code"
