@@ -18,15 +18,19 @@ jobs:
     name: calibreapp/github-actions
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
       - name: Create Snapshot
         uses: calibreapp/github-actions@main
         env:
           CALIBRE_API_TOKEN: ${{ secrets.CALIBRE_API_TOKEN }}
-        run: site create-snapshot --site=${{ secrets.CALIBRE_SITE_SLUG }}
+        with:
+          command: site create-snapshot --site=${{ secrets.CALIBRE_SITE_SLUG }}
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
 ```
+
+Inputs:
+
+- `command` The Calibre CLI command to run e.g. `create snapshot --site=${{ secrets.CALIBRE_SITE_SLUG }}
 
 Secrets:
 
