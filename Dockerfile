@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM node:21-slim
 
 LABEL version="3.0.0"
 LABEL repository="http://github.com/calibreapp/github-actions"
